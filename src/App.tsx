@@ -14,25 +14,16 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login/>} />
       </Route>
     )
   );
   return <RouterProvider router={router} />;
 }
-
 function Root() {
   return (
     <>
-      <p>
-        <Link to="/">Home</Link>
-      </p>
-      <p>
-        <Link to="/login">login</Link>
-      </p>
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
     </>
   );
 }

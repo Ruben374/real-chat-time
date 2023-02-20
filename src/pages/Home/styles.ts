@@ -1,4 +1,7 @@
 import styled from "styled-components";
 export const Container = styled.div`
-  background-color: ${(props) => props.theme.main};
+  background-color: red;
+  display: grid;
+  grid-template-columns: 20% 65% 15%;
+  grid-template-rows: 100vh;
 `;

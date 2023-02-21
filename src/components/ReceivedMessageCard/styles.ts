@@ -17,11 +17,14 @@ export const MessageCard = styled.div`
   }
   .message--content {
     padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 export const MessageTime = styled.span`
   margin-left: 20px;
   align-self: flex;
   font-family: "Nunito Sans", sans-serif;
-  color:${(props) => props.theme.textSecondary}
+  color: ${(props) => props.theme.textSecondary};
 `;

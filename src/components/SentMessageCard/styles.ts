@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const MessageCard = styled.div`
   background-color: ${(props) => props.theme.messageBackgroundPrimary};
   max-width: 70%;
-  min-height: 50px;
   display: flex;
   justify-content: space-between;
   align-self: flex-end;
@@ -17,6 +16,9 @@ export const MessageCard = styled.div`
   }
   .message--content {
     padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items:center;
   }
 `;
 export const MessageTime = styled.span`

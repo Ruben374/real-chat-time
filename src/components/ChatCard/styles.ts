@@ -3,6 +3,13 @@ export const MessageCardContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 0.7rem 1rem;
+  &:hover{
+    background-color:${(props)=>props.theme.activeChatBackground};
+  }
+  &.open--card{
+    background-color:${(props)=>props.theme.activeChatBackground};
+  }
+  
   //background-color: ${(props) => props.theme.activeChatBackground};
   gap: 0.5rem;
   div {

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const MessageCard = styled.div`
   background-color: ${(props) => props.theme.messageBackgroundSecondary};
   max-width: 70%;
-  min-height: 50px;
   display: flex;
   justify-content: space-between;
   align-self: flex-start;

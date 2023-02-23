@@ -8,13 +8,14 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
+import { OpenChatProvider } from "./contexts/OpenChatContext";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/login" element={<Login />} />
       </Route>
     )
   );
@@ -22,9 +23,9 @@ function App() {
 }
 function Root() {
   return (
-    <>
+    <OpenChatProvider>
       <Outlet />
-    </>
+    </OpenChatProvider>
   );
 }
 export default App;

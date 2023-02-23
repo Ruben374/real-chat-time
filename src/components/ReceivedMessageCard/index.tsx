@@ -1,19 +1,15 @@
-import { MessageCard,MessageTime } from "./styles";
-export function ReceivedMessageCard() {
+import { MessageCard, MessageTime } from "./styles";
+import { MessageCardTypes } from "../../types";
+export function ReceivedMessageCard(props: MessageCardTypes) {
   return (
     <>
       <MessageCard style={{ marginTop: "1.5rem" }}>
         <div className="cut"></div>
         <div className="message--content">
-          <p>
-            ola meu amigo dod dodd dojdjs odjdojsodj dodojd ojdojd dojdodj
-            dojsodj odjsdj osjdsojso odjsdo
-          </p>
+          <span>{props.body}</span>
         </div>
       </MessageCard>
-     <MessageTime>
-      17:00
-     </MessageTime>
+      <MessageTime>{props.time}</MessageTime>
     </>
   );
 }

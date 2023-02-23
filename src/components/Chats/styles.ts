@@ -1,9 +1,15 @@
 import styled from "styled-components";
 export const Container = styled.div`
+position: relative;
   background-color: ${(props) => props.theme.primary};
   display: flex;
   flex-direction: column;
-  border-right:3px solid  ${(props) => props.theme.messageBackgroundSecondary};
+  border-right: 3px solid ${(props) => props.theme.messageBackgroundSecondary};
+ 
+  @media only screen and (max-width: 990px) {
+    /* For everything smaller than 768px */
+    height: 100vh;
+  }
 `;
 ///Header,Search,MessageContainer
 export const Header = styled.header`
@@ -15,6 +21,11 @@ export const Header = styled.header`
     align-items: center;
     justify-content: center;
     gap: 1rem;
+  }
+  button {
+    background: none;
+    outline: none;
+    border: none;
   }
 `;
 export const SearchContainer = styled.div`
@@ -65,14 +76,14 @@ export const ChatContainer = styled.div`
   overflow: auto;
   ::-webkit-scrollbar {
     width: 5px; /* width of the entire scrollbar */
-   
   }
   ::-webkit-scrollbar-track {
     //background: orange; /* color of the tracking area */
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme.textSecondary}; /* color of the scroll thumb */
+    background-color: ${(props) =>
+      props.theme.textSecondary}; /* color of the scroll thumb */
     border-radius: 20px; /* roundness of the scroll thumb */
     //border: 3px solid red; /* creates padding around scroll thumb */
   }

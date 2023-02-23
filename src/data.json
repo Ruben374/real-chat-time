@@ -1,0 +1,74 @@
+[
+  {
+    "_id": "63ef5909240709b8a5f6f16a",
+    "users": [
+      {
+        "id": "1234",
+        "name": "Ruben André"
+      },
+      {
+        "id": "12345",
+        "name": "Fulano de tal"
+      }
+    ],
+    "messages": [
+      {
+        "type": "text",
+        "body": "ola ruben, como vai?",
+        "author": "mano1",
+        "receiver": "Ruben André",
+        "time": "13:09"
+      },
+      {
+        "type": "text",
+        "body": "estou bm mano e vc? eu estava mesmo para falar contigo, preciso de um favor teu",
+        "author": "Ruben André",
+        "receiver": "mano1",
+        "time": "13:09"
+      },
+      {
+        "type": "text",
+        "body": "Se possivel amanhã passa aqui em casa logo cedo e me ajuda a montar uma mesa para a sabrina",
+        "author": "Ruben André",
+        "receiver": "mano1",
+        "time": "13:09"
+      },
+      {
+        "type": "text",
+        "body": "Tabem estou bm, ok mano sem problemas, te puxei pra avisar mesmo que passaria",
+        "author": "mano1",
+        "receiver": "Ruben André",
+        "time": "13:09"
+      }
+    ]
+  },
+  {
+    "_id": "6",
+    "users": [
+      {
+        "id": "1234",
+        "name": "Ruben André"
+      },
+      {
+        "id": "123456",
+        "name": "Fulana de tal"
+      }
+    ],
+    "messages": [
+      {
+        "type": "text",
+        "body": "Te amo vida!",
+        "author": "Amor",
+        "receiver": "Ruben André",
+        "time": "00:09"
+      },
+      {
+        "type": "text",
+        "body": "Também Te amo!",
+        "author": "Ruben André",
+        "receiver": "Amor",
+        "time": "00:10"
+      }
+    ]
+  }
+]

@@ -9,19 +9,32 @@ import {
   OpenChatContext,
   OpenChatProvider,
 } from "../../contexts/OpenChatContext";
+import { UserContext } from "../../contexts/UserContext";
 export default function Home() {
   const { chatWidth, openChatWidth } = useContext(OpenChatContext);
+  const { setUserData } = useContext(UserContext);
   const [isAllowed, setIsAllowed] = useState(false);
   let navigate = useNavigate();
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
+    const searchParams = new URLSearchParams(window.location.search);
+    const encodedToken = searchParams.get("token");
+    /* vindo da url de login */
+    if (encodedToken) {
+      const token = decodeURIComponent(encodedToken);
+      //console.log(token);
+      localStorage.setItem("token", token);
       setIsAllowed(true);
     } else {
-      console.log("token not found");
-      //navigate("/login");
+      /* vindo normal */
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/login");
+        setIsAllowed(false);
+      }
       setIsAllowed(true);
     }
+
+    /*   */
   }, []);
 
   function HandleShow() {}
@@ -29,7 +42,7 @@ export default function Home() {
   return (
     <>
       {isAllowed ? (
-        <Container chatWidth={chatWidth} openChatWidth={openChatWidth} >  
+        <Container chatWidth={chatWidth} openChatWidth={openChatWidth}>
           <Chats />
           <OpenChat />
         </Container>

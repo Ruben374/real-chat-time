@@ -18,13 +18,13 @@ export function OpenChatProvider({ children }: OpenChatProviderProps) {
   function OpenNewChat(chatId: string) {
     console.log("é esse:", chatId);
     let chat = chats.filter((item) => item._id === chatId);
-    console.log(chat[0]);  
+    console.log(chat[0]);
     console.log(typeof chat[0]);
 
     setOpenChat(chat[0]);
     //setOpenChatMessages(chat[0].messages);
     //console.log("abriu o chat: ", chatId);
-    console.log(chat[0].messages)
+    console.log(chat[0].messages);
     setIsChatOpen(true);
     setOpenChatId(chatId);
   }
@@ -50,11 +50,10 @@ export function OpenChatProvider({ children }: OpenChatProviderProps) {
       messages: [],
     };
 
-    
-   //setOpenChat(emptyChat);
-   // console.log( typeof emptyChat.messages)
+    //setOpenChat(emptyChat);
+    // console.log( typeof emptyChat.messages)
     //setOpenChatMessages([]);
-   //setOpenChatId(chatId);
+    //setOpenChatId(chatId);
     //setIsChatOpen(true);
   }
 

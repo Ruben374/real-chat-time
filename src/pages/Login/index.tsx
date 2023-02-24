@@ -11,7 +11,7 @@ export default function Login() {
         <span>©copyright by Ruben André</span>
       </div>
       <div className="right--container">
-        <GoogleBtn href="/">
+        <GoogleBtn href="http://localhost:3000/auth/google">
           <img src="/icons/google-logo.svg" alt="Google icon" />
           <span>Continue with Google</span>
         </GoogleBtn>

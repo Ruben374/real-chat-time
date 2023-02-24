@@ -5,7 +5,6 @@ export interface ChatTypes {
   body: number;
   type: string;
 }
-
 export interface MessageCardTypes {
   body: string;
   time: string;
@@ -14,7 +13,9 @@ export interface NewChatModalTypes {
   display: string;
   onclick: () => void;
 }
-
 export interface NewChatModalStylesTypes {
   display: string;
+}
+export interface UserDatatype{
+
 }

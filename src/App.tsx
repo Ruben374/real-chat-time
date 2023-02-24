@@ -9,6 +9,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import { OpenChatProvider } from "./contexts/OpenChatContext";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   const router = createBrowserRouter(
@@ -23,9 +24,11 @@ function App() {
 }
 function Root() {
   return (
-    <OpenChatProvider>
-      <Outlet />
-    </OpenChatProvider>
+    <UserProvider>
+      <OpenChatProvider>
+        <Outlet />
+      </OpenChatProvider>
+    </UserProvider>
   );
 }
 export default App;

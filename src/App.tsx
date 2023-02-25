@@ -8,7 +8,7 @@ import {
   Link,
   Outlet,
 } from "react-router-dom";
-import { OpenChatProvider } from "./contexts/OpenChatContext";
+import { ScreenWidthProvider } from "./contexts/ScreenWidthContext";
 import { UserProvider } from "./contexts/UserContext";
 
 function App() {
@@ -24,11 +24,11 @@ function App() {
 }
 function Root() {
   return (
-    <UserProvider>
-      <OpenChatProvider>
-        <Outlet />
-      </OpenChatProvider>
-    </UserProvider>
+   <UserProvider>
+     <ScreenWidthProvider>
+      <Outlet />
+    </ScreenWidthProvider>
+   </UserProvider>
   );
 }
 export default App;

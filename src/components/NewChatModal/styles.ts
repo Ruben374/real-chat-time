@@ -39,6 +39,11 @@ export const ContactCard = styled.div`
   display: flex;
   align-items: center;
   padding: 0.7rem 1rem;
+  >img{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+  }
   &:hover {
     background-color: ${(props) => props.theme.activeChatBackground};
   }

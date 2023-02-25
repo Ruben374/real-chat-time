@@ -9,10 +9,12 @@ import { ReceivedMessageCard } from "../ReceivedMessageCard";
 import { SentMessageCard } from "../SentMessageCard";
 import SearchIcon from "@mui/icons-material/Search";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { OpenChatContext } from "../../contexts/OpenChatContext";
+import { UserContext } from "../../contexts/UserContext";
 
 export function OpenChat() {
+  const [message, setMessage] = useState("");
   const {
     setOpenChatWidth,
     setChatWidth,
@@ -20,13 +22,27 @@ export function OpenChat() {
     openChat,
     openChatMessages,
     resetOpenChat,
+    SendMessage,
   } = useContext(OpenChatContext);
+  const { userData } = useContext(UserContext);
   function openChatCard() {
     setOpenChatWidth("0%");
     setChatWidth("100%");
     resetOpenChat();
   }
-
+  function sendMessage(msg: any) {
+    console.log(msg)
+    console.log(msg)
+    const obj = {
+      type: "text",
+      body: message,
+      author: userData._id,
+      receiver: msg._id,
+      chatId: openChat.id,
+    };
+    SendMessage(obj);
+    setMessage("");
+  }
   const name = "Ruben André";
   return (
     <Container>
@@ -37,12 +53,8 @@ export function OpenChat() {
               <button onClick={openChatCard}>
                 <img src="/back-icon.png" width="25px" />
               </button>
-              <img src="/person.png" />
-              <span>
-                {openChat.users[0].id === "1234"
-                  ? openChat.users[1].name
-                  : openChat.users[0].name}
-              </span>
+              <img src={openChat.with.avatar} />
+              <span>{openChat.with.name}</span>
             </div>
             <div className="right">
               <button>
@@ -76,9 +88,13 @@ export function OpenChat() {
             </button>
 
             <div className="input--area">
-              <input type="text" placeholder="Escreva uma mensagem" />
+              <input
+                type="text"
+                placeholder="Escreva uma mensagem"
+                onChange={(e) => setMessage(e.target.value)}
+              />
             </div>
-            <button>
+            <button onClick={() => sendMessage(openChat.with)}>
               <img src="/micro-icon.png" alt="micro icon" />
             </button>
           </Footer>

@@ -10,24 +10,30 @@ import { ChatCard } from "../ChatCard";
 import { OpenChatContext } from "../../contexts/OpenChatContext";
 import Loading from "../Loanding";
 import { NewChatModal } from "../NewChatModal";
+import { UserContext } from "../../contexts/UserContext";
 //import { ChatTypes } from "../../types/types";
 
 export function Chats() {
-  const { showChats, chats, openChatId } = useContext(OpenChatContext);
+  const { showChats, chats, openChatId, resetOpenChat } =
+    useContext(OpenChatContext);
+  const { userData } = useContext(UserContext);
   const [isLoanding, setIsLoading] = useState(false);
   const [widthModal, setWidthModal] = useState("none");
   let index = 0;
-  /*  useEffect(() => {
-    console.log(chats);
-  }, [chats]); */
+  useEffect(() => {
+    console.log(userData)
+  },[]); 
+
   function closeModal() {
+    //resetOpenChat()
     setWidthModal("none");
   }
+  
   return (
     <Container>
       <NewChatModal display={widthModal} onclick={closeModal} />
       <Header>
-        <img src="/person.png" alt="person icon" />
+        <img src={userData.avatar} alt="person icon" referrerPolicy="no-referrer" />
         <div>
           <button onClick={() => setWidthModal("block")}>
             <img src="/message-icon.png" alt="message icon" />
@@ -49,10 +55,8 @@ export function Chats() {
           <ChatCard
             key={item._id}
             _id={item._id}
-            author={
-              item.users[0].id == "1234" ? item.users[1].name : item.users[0].name
-            }
-            time={item.messages[item.messages.length - 1].time}
+            author={item.with.name}
+            time="12:55"
             type={item.messages[item.messages.length - 1].type}
             body={item.messages[item.messages.length - 1].body}
           />

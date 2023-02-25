@@ -13,9 +13,9 @@ export const Container = styled.div`
   }
 `;
 export const Header = styled.header`
-position: fixed;
-width: 100%;
-z-index: 1;
+  position: fixed;
+  width: 75%;
+  z-index: 1;
   height: 60px;
   background-color: ${(props) => props.theme.primary};
   display: flex;
@@ -26,6 +26,11 @@ z-index: 1;
   > div {
     display: flex;
     align-items: center;
+    > img {
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+    }
   }
   .left {
     gap: 0.5rem;
@@ -45,6 +50,7 @@ z-index: 1;
   }
   @media only screen and (max-width: 990px) {
     /* For everything smaller than 768px */
+    width: 100%;
     .left button:first-child {
       display: block;
     }
@@ -73,10 +79,10 @@ export const MessageContainer = styled.main`
 `;
 
 export const Footer = styled.footer`
-position: fixed;
-width: 100%;
-z-index: 1;
-bottom: 0;
+  position: fixed;
+  width: 75%;
+  z-index: 1;
+  bottom: 0;
   height: 70px;
   background-color: ${(props) => props.theme.primary};
   display: flex;
@@ -103,6 +109,10 @@ bottom: 0;
     outline: none;
     border: none;
   }
+  @media only screen and (max-width: 990px) {
+    /* For everything smaller than 768px */
+    width: 100%;
+  }
 `;
 export const DefaultBackground = styled.div`
   background-color: greenyellow;
@@ -114,7 +124,7 @@ export const DefaultBackground = styled.div`
   color: ${(props) => props.theme.textPrimary};
   @media only screen and (max-width: 990px) {
     /* For everything smaller than 768px */
-
+    width: 100%;
     display: none;
   }
 `;

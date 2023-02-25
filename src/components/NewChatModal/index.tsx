@@ -4,7 +4,7 @@ import { NewChatModalTypes } from "../../types";
 import { Container, ContactCard, Header } from "./styles";
 
 export function NewChatModal({ display, onclick }: NewChatModalTypes) {
-  const { contact, OpenEmptyChat } = useContext(OpenChatContext);
+  const { contacts, OpenEmptyChat } = useContext(OpenChatContext);
   return (
     <Container display={display}>
       <Header>
@@ -13,9 +13,11 @@ export function NewChatModal({ display, onclick }: NewChatModalTypes) {
         </button>
         <span>Lista de contactos</span>
       </Header>
-      {contact.map((item: any) => (
-        <ContactCard onClick={OpenEmptyChat(item.name, item.email, "emptyChat")}>
-          <img src="/person.png" alt="person icon" />
+      {contacts.map((item: any) => (
+        <ContactCard
+          onClick={() => OpenEmptyChat(item._id, item.name, item.avatar)}
+        >
+          <img src={item.avatar} alt="person icon" />
           <div>
             <span className="contact--name">{item.name}</span>
             <span className="contact--email">{item.email}</span>

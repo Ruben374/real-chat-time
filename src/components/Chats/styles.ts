@@ -27,6 +27,11 @@ export const Header = styled.header`
     outline: none;
     border: none;
   }
+  >img{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+  }
 `;
 export const SearchContainer = styled.div`
   width: 100%;

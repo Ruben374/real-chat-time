@@ -9,32 +9,38 @@ import {
   OpenChatContext,
   OpenChatProvider,
 } from "../../contexts/OpenChatContext";
+
+import { UserProvider } from "../../contexts/UserContext";
 import { UserContext } from "../../contexts/UserContext";
+import { ScreenWidthContext } from "../../contexts/ScreenWidthContext";
 export default function Home() {
-  const { chatWidth, openChatWidth } = useContext(OpenChatContext);
-  const { setUserData } = useContext(UserContext);
+  const { chatWidth, openChatWidth } = useContext(ScreenWidthContext);
+  const { getUser, allowedUser } = useContext(UserContext);
   const [isAllowed, setIsAllowed] = useState(false);
   let navigate = useNavigate();
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const encodedToken = searchParams.get("token");
-    /* vindo da url de login */
-    if (encodedToken) {
-      const token = decodeURIComponent(encodedToken);
-      //console.log(token);
-      localStorage.setItem("token", token);
-      setIsAllowed(true);
-    } else {
-      /* vindo normal */
-      const token = localStorage.getItem("token");
-      if (!token) {
-        navigate("/login");
-        setIsAllowed(false);
+    async function verify() {
+      const searchParams = new URLSearchParams(window.location.search);
+      const encodedToken = searchParams.get("token");
+      if (encodedToken) {
+        const token = decodeURIComponent(encodedToken);
+        //
+        await localStorage.setItem("token", token);
+        await getUser();
+        // allowedUser();
+        setIsAllowed(true);
+      } else {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          navigate("/login");
+          setIsAllowed(false);
+        }
+        await getUser();
+        // console.log(token);
+        setIsAllowed(true);
       }
-      setIsAllowed(true);
     }
-
-    /*   */
+    verify();
   }, []);
 
   function HandleShow() {}
@@ -42,10 +48,12 @@ export default function Home() {
   return (
     <>
       {isAllowed ? (
-        <Container chatWidth={chatWidth} openChatWidth={openChatWidth}>
-          <Chats />
-          <OpenChat />
-        </Container>
+        <OpenChatProvider>
+          <Container chatWidth={chatWidth} openChatWidth={openChatWidth}>
+            <Chats />
+            <OpenChat />
+          </Container>
+        </OpenChatProvider>
       ) : (
         <Loading />
       )}
